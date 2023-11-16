@@ -1,0 +1,25 @@
+.footer {
+    padding: 50px 0px;
+    background: rgb(251, 243, 243);
+    display: flex;
+    text-align: start;
+    justify-content: center;
+    gap: 8rem;
+    align-items: center;
+  }
+  
+  .footer__content {
+    text-align: center;
+  }
+  
+  .footer__content h5 {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+  
+  .footer__content p {
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 29px;
+  }
