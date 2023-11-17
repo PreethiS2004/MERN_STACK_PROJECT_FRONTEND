@@ -8,9 +8,9 @@ function Nav(){
             <div class="nav" >
             <Link to="/" class="nav-link" style={{color:"rgb(57, 56, 56)",fontSize:"20px"}}>Home</Link>
             <Link to="/user-login" class="nav-link" style={{color:" rgb(57, 56, 56)",fontSize:"20px"}}>Log in</Link>
+            <Link to="/admin-login" class="nav-link" style={{color:" rgb(57, 56, 56)",fontSize:"20px"}}>Admin</Link>
             <Link to="/user-signup" class="nav-link"style={{color:"rgb(57, 56, 56)",fontSize:"20px"}}>Sign up</Link>
             <Link to="/create-recipe" class="nav-link"style={{color:"rgb(57, 56, 56)",fontSize:"20px"}}>Add Recipes</Link>
-            <Link to="/recipe" class="nav-link"style={{color:"rgb(57, 56, 56)",fontSize:"20px"}}>Recipe</Link>
             <Link to="/search" class="nav-link"style={{color:"rgb(57, 56, 56)",fontSize:"20px"}}>Search</Link>
             
             </div>
@@ -19,3 +19,5 @@ function Nav(){
 }
 
 export default Nav;
+
+//            <Link to="/recipe" class="nav-link"style={{color:"rgb(57, 56, 56)",fontSize:"20px"}}>Recipe</Link>

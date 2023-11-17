@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Use useNavigate instead of useHistory
 import Axios from "axios";
-import Form from "./LoginForm";
+import Form from "./AdminLoginForm";
 
 function Login() {
   const [arr, setArr] = useState([]);
@@ -15,12 +15,12 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = { username: arr[0], password: arr[1] };
-    Axios.post("http://localhost:4001/Route/user-login", data)
+    Axios.post("http://localhost:4001/Route/admin-login", data)
       .then((res) => {
         if (res.status === 200) {
-          alert("Login successful");
+          alert("Admin Login successful");
           setErrorMessage(null);
-          navigate('/recipe'); // Use navigate instead of push
+          navigate('/adminpage'); // Use navigate instead of push
         } else {
           alert("Invalid username or password");
           event.target.reset();

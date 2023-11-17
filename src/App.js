@@ -7,8 +7,11 @@ import Signup from './components/Signup';
 import UserCRUD from './components/UserCRUD';
 import Homepage from './components/Homepage';
 import RecipePage from './components/RecipePage';
-import RecipeDetails from './components/RecipeDetails';
 import SearchRecipe from "./components/SearchRecipe";
+import AdminLogin from "./components/AdminLogin";
+import DashboardPage from "./components/AdminPage";
+import UserDetails from "./components/Userdetails";
+import Editrecipe from "./components/Editrecipe";
 function App() {
   return (
    <div>
@@ -21,6 +24,10 @@ function App() {
         <Route path="/create-recipe" element={<UserCRUD/>}/>
         <Route path="/recipe" element={<RecipePage/>}/>
         <Route path="/search" element={<SearchRecipe/>}/>
+        <Route path="admin-login" element={<AdminLogin/>}/>
+        <Route path="adminpage" element={<DashboardPage/>}/>
+        <Route path="view-user-details" element={<UserDetails/>}/>
+        <Route path="edit-recipe" element={<Editrecipe/>}/>
 
 
 
