@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "../styles/Editrecipe.css"; // Import the CSS file for styling
+import { useNavigate } from 'react-router-dom';
 
 const Editrecipe = () => {
   const [recipeDetails, setRecipeDetails] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch recipe details from the server when the component mounts
@@ -35,10 +37,19 @@ const Editrecipe = () => {
         alert("Error deleting recipe. Check the console for details.");
       });
   };
-
+  const handleTopGoBack = () => {
+    // Use the navigate function to go back
+    navigate(-1);
+  };
   return (
     <div className="recipe-details-container">
       <h2 style={{ paddingBottom: "2%" }}>Recipe Details</h2>
+      <button
+        style={{ position:"relative",left:"45%",bottom:"80px",borderRadius:"8px",border:"1"}}
+        onClick={handleTopGoBack}
+      >
+        Go back
+      </button>
       <table className="recipe-details-table">
         <thead>
           <tr>

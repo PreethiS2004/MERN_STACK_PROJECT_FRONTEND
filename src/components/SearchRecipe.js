@@ -1,6 +1,9 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Recipe = () => {
   const [recipes, setRecipes] = useState([]);
@@ -24,10 +27,16 @@ const Recipe = () => {
   }, []);
 
   const handleRecipeClick = (recipe) => {
-    setrecipeclick(false);
     console.log("Recipe clicked:", recipe);
     setSelectedRecipe(recipe);
+    setrecipeclick(false); // Set the state after updating the selected recipe
+
   };
+  
+  const handleGoback=() => {
+    setSelectedRecipe(null);
+    setrecipeclick(true);
+  }
 
   return (
     <div>
@@ -118,10 +127,7 @@ const Recipe = () => {
       </div>
             <button
               style={{ borderRadius: "5px" ,marginLeft:"40%"}}
-              onClick={() => {
-                setSelectedRecipe(null);
-                setrecipeclick(true);
-              }}
+              onClick={handleGoback}
             >
               Go back
             </button>
@@ -142,6 +148,7 @@ const SearchRecipe = ({ setRecipes }) => {
   const [categoryquery, setcategoryQuery] = useState("");
   const [cuisinequery, setcuisineQuery] = useState("");
   const [recipeclick, setrecipeclick] = useState(true);
+  const navigate = useNavigate();
 
   const handlerecipeSearch = async () => {
     try {
@@ -192,6 +199,12 @@ const SearchRecipe = ({ setRecipes }) => {
     }
   };
 
+  const handleTopGoBack = () => {
+    // Use the navigate function to go back
+    navigate(-1);
+  };
+  
+
   const searchBoxContainerStyle = {
     display: "flex",
     marginTop:"10px",
@@ -202,6 +215,12 @@ const SearchRecipe = ({ setRecipes }) => {
   };
   return (
     <div style={searchBoxContainerStyle}>
+      <button
+        style={{ position:"relative",left:"93%",borderRadius:"8px",border:"1"}}
+        onClick={handleTopGoBack}
+      >
+        Go back
+      </button>
       {recipeclick && (
         <div style={searchBoxStyle}>
           <input
@@ -289,8 +308,9 @@ const SearchRecipe = ({ setRecipes }) => {
            <option value="Vietnamese">Vietnamese</option>
             
           </select>
-            <button style={{borderRadius:"5px",border:"0",marginLeft:"15px"}} onClick={() => handleSearch("cuisine")}>Search</button>       
+            <button style={{borderRadius:"5px",border:"0",marginLeft:"15px"}} onClick={() => handleSearch("cuisine")}>Search</button>  
         </div>
+        
       )}
       
     </div>

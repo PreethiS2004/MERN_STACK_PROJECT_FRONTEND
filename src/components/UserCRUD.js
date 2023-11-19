@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import '../styles/UserCRUD.css';
+import { useNavigate } from 'react-router-dom';
 const MealForm = () => {
   const [mealData, setMealData] = useState({
     idMeal: "",
@@ -19,6 +20,8 @@ const MealForm = () => {
     strTags:""
    
   });
+  const navigate = useNavigate();
+
 
   const handleChange = (e) => {
     setMealData({ ...mealData, [e.target.name]: e.target.value });
@@ -54,12 +57,22 @@ const MealForm = () => {
       alert("Error adding recipe. Please check the console for details.");
     }
   };
+  const handleTopGoBack = () => {
+    // Use the navigate function to go back
+    navigate(-1);
+  };
+  
   return (
   <div class="recipe-form" >
     <div className="form-container" style={{width:"50%"}}>
       <h2 class="form-title">Add a New Recipe</h2>
        <form onSubmit={handleSubmit}>
-        
+       <button
+        style={{ position:"relative",bottom:"100px",left:"145%",borderRadius:"8px",border:"1"}}
+        onClick={handleTopGoBack}
+      >
+        Go back
+      </button>
           <input type="number" name="idMeal" value={mealData.idMeal} class="form-control my-3" onChange={handleChange} placeholder="Id" required/>
        
           <input type="text" name="strMeal" value={mealData.strMeal} class="form-control my-3" onChange={handleChange} placeholder="Dish Name" required/>

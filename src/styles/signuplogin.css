@@ -1,5 +1,5 @@
 .signup-form {
-    background: url('../../public/bg_image.jpeg') no-repeat center center fixed;
+    background: url('../../public/bg_image.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 90vh;
     width:100%;
@@ -16,7 +16,7 @@
   background-color: rgba(99, 99, 99, 0.623); /* Adjust the alpha value to change the overlay opacity */
 }
 .login-form {
-  background: url('../../public/bg_image.jpeg') no-repeat center center fixed;
+  background: url('../../public/bg_image.jpg') no-repeat center center fixed;
   background-size: cover;
   height: 90vh;
   width:100%;

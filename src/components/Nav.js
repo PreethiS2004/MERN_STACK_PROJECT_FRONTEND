@@ -5,7 +5,7 @@ function Nav(){
     return(
       <nav class="navbar" >
              
-            <Link to="/" class="navbar-brand " style={{fontFamily:"initial",fontSize:"35px",fontWeight:"bold"}}><img style={{height:"60px"}} src={logo} alt="loading..." />  Food Recipes</Link>
+            <Link to="/" class="navbar-brand " style={{fontFamily:"initial",fontSize:"35px",fontWeight:"bold"}}><img style={{height:"60px"}} src={logo} alt="loading..." /> Recipe Finder</Link>
             <div class="nav" >
             <Link to="/" class="nav-link" style={{color:"rgb(57, 56, 56)",fontSize:"20px"}}>Home</Link>
             <Link to="/user-login" class="nav-link" style={{color:" rgb(57, 56, 56)",fontSize:"20px"}}>Login</Link>
