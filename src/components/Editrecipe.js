@@ -58,7 +58,7 @@ const Editrecipe = () => {
               <td>{recipe.strArea}</td>
               <td>
                 <button onClick={() => handleClick(recipe._id)} className="btn btn-danger">
-                  Delete
+                  Remove
                 </button>
               </td>
             </tr>

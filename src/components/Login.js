@@ -1,44 +1,46 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Use useNavigate instead of useHistory
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import Form from "./LoginForm";
 
 function Login() {
-  const [arr, setArr] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const formRef = useRef(null);
+  const navigate = useNavigate();
 
-  const getState = (childData) => {
-    setArr(childData);
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = { username: arr[0], password: arr[1] };
-    Axios.post("http://localhost:4001/Route/user-login", data)
-      .then((res) => {
-        if (res.status === 200) {
-          alert("Login successful");
-          setErrorMessage(null);
-          navigate('/recipe'); // Use navigate instead of push
-        } else {
-          alert("Invalid username or password");
-          event.target.reset();
-        }
-      })
-      .catch((error) => alert("Invalid username or password"));
+    const data = { username, password };
+
+    try {
+      const response = await Axios.post("http://localhost:4001/Route/user-login", data);
+
+      if (response.status === 200) {
+        alert("Login successful");
+        navigate('/search');
+      } else {
+        alert("Invalid username or password");
+        setUsername(""); // Reset the username field
+        setPassword(""); // Reset the password field
+        formRef.current.reset(); // Reset the form using the form reference
+      }
+    } catch (error) {
+      alert("Invalid username or password");
+      setUsername(""); // Reset the username field
+      setPassword(""); // Reset the password field
+      formRef.current.reset(); // Reset the form using the form reference
+    }
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <Form getState={getState} usernamevalue="" passwordvalue="">
+      <form ref={formRef} onSubmit={handleSubmit}>
+        <Form getState={(childData) => { setUsername(childData[0]); setPassword(childData[1]); }} usernamevalue={username} passwordvalue={password}>
           {/* Your form components */}
         </Form>
+        <button type="submit">Submit</button>
       </form>
-      {errorMessage && (
-        <p style={{ color: "red", textAlign: "center" }}>{errorMessage}</p>
-      )}
     </div>
   );
 }

@@ -55,7 +55,7 @@ const UserDetails = () => {
               <td>{user.password}</td>
               <td>{user.email}</td>
               <td><button onClick={() => handleClick(user._id)} class="btn btn-danger">
-                    Delete
+                    Remove
                 </button></td>
             </tr>
           ))}

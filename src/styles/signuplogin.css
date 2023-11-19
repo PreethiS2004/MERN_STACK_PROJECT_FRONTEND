@@ -71,3 +71,7 @@
  .form-control{
   height: 35px ;
  }
+ .error{
+  color: "red";
+  align-items: "center"
+ }
