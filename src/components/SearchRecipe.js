@@ -27,9 +27,9 @@ const Recipe = () => {
   }, []);
 
   const handleRecipeClick = (recipe) => {
+    setrecipeclick(false); // Set the state after updating the selected recipe
     console.log("Recipe clicked:", recipe);
     setSelectedRecipe(recipe);
-    setrecipeclick(false); // Set the state after updating the selected recipe
 
   };
   
@@ -40,8 +40,7 @@ const Recipe = () => {
 
   return (
     <div>
-      <SearchRecipe setRecipes={setRecipes} />
-      {recipeclick && (
+       {recipeclick && <SearchRecipe setRecipes={setRecipes} />}      {recipeclick && (
         <div style={{ display: "flex", flexWrap: "wrap" ,marginLeft:"10%",marginTop:"3%"}}>
           {recipes.map((recipe, index) => (
             <div

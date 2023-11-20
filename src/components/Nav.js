@@ -21,4 +21,3 @@ function Nav(){
 
 export default Nav;
 
-//            <Link to="/recipe" class="nav-link"style={{color:"rgb(57, 56, 56)",fontSize:"20px"}}>Recipe</Link>

@@ -14,8 +14,9 @@ const Footer = () => {
       <div className="footer__content">
       <FontAwesomeIcon  icon={faHeart} size="3x" style={{ color: 'red' }} />
       <p></p>
-        <h4>Save Recipes </h4>
-        <p>Once you're logged in, you can save your favorite recipes to your profile !</p>
+      <h4>Send Your Recipe Ideas</h4>
+<p>Have a unique recipe idea in mind? Share it with us!<br></br>
+   You can send us a message or email with your recipe ideas, and we'll consider implementing them on our website. We love hearing from our community!</p>
       </div>
       <div className="footer__content">
       <FontAwesomeIcon icon={faGlobe} size="3x" style={{ color: 'green' }}/>

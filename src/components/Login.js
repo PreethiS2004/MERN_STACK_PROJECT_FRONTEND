@@ -36,9 +36,17 @@ function Login() {
   return (
     <div>
       <form ref={formRef} onSubmit={handleSubmit}>
-        <Form getState={(childData) => { setUsername(childData[0]); setPassword(childData[1]); }} usernamevalue={username} passwordvalue={password}>
+      <Form
+          getState={(childData) => {
+            setUsername(childData[0]);
+            setPassword(childData[1]);
+          }}
+          usernamevalue={username}
+          passwordvalue={password}
+        >
           {/* Your form components */}
         </Form>
+
         <button type="submit">Submit</button>
       </form>
     </div>

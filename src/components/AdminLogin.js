@@ -20,7 +20,7 @@ function Login() {
         if (res.status === 200) {
           alert("Admin Login successful");
           setErrorMessage(null);
-          navigate('/adminpage'); // Use navigate instead of push
+          navigate("/adminpage"); // Use navigate instead of push
         } else {
           alert("Invalid username or password");
           event.target.reset();
@@ -36,9 +36,7 @@ function Login() {
           {/* Your form components */}
         </Form>
       </form>
-      {errorMessage && (
-        <p style={{ color: "red", textAlign: "center" }}>{errorMessage}</p>
-      )}
+     
     </div>
   );
 }
