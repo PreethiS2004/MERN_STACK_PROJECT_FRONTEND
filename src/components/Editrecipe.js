@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "../styles/Editrecipe.css"; // Import the CSS file for styling
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Editrecipe = () => {
   const [recipeDetails, setRecipeDetails] = useState([]);
@@ -12,7 +12,9 @@ const Editrecipe = () => {
     // Fetch recipe details from the server when the component mounts
     const fetchRecipeDetails = async () => {
       try {
-        const response = await Axios.get("http://localhost:4001/RecipeRoute");
+        const response = await Axios.get(
+          "https://recipe-finder-project-backend.onrender.com/RecipeRoute"
+        );
         setRecipeDetails(response.data);
       } catch (error) {
         console.error("Error fetching recipe details:", error.message);
@@ -23,14 +25,18 @@ const Editrecipe = () => {
   }, []);
 
   const handleClick = (recipeId) => {
-    Axios.delete(`http://localhost:4001/RecipeRoute/delete-recipe/${recipeId}`)
+    Axios.delete(
+      `https://recipe-finder-project-backend.onrender.com/RecipeRoute/delete-recipe/${recipeId}`
+    )
       .then((res) => {
         if (res.status === 200) {
           alert("Record deleted successfully");
           window.location.reload();
         } else {
           console.error("Delete request failed with status:", res.status);
-          return Promise.reject(`Delete request failed with status: ${res.status}`);
+          return Promise.reject(
+            `Delete request failed with status: ${res.status}`
+          );
         }
       })
       .catch((err) => {
@@ -38,7 +44,7 @@ const Editrecipe = () => {
         alert("Error deleting recipe. Check the console for details.");
       });
   };
-  
+
   const handleupdateClick = (recipeId) => {
     console.log(recipeId);
     setrecipeupdateclick(true);
@@ -66,7 +72,7 @@ const Editrecipe = () => {
     // Use the navigate function to go back
     navigate(-1);
   };
-  
+
   const handleChange = (e) => {
     setMealData({ ...mealData, [e.target.name]: e.target.value });
   };
@@ -76,7 +82,7 @@ const Editrecipe = () => {
 
     try {
       const response = await Axios.post(
-        "http://localhost:4001/RecipeRoute/update-recipe",
+        "https://recipe-finder-project-backend.onrender.com/RecipeRoute/update-recipe",
         mealData
       );
 
@@ -108,16 +114,21 @@ const Editrecipe = () => {
   return (
     <div className="recipe-details-container">
       <button
-        style={{ position:"relative",left:"45%",bottom:"10px",borderRadius:"8px",border:"1"}}
+        style={{
+          position: "relative",
+          left: "45%",
+          bottom: "10px",
+          borderRadius: "8px",
+          border: "1",
+        }}
         onClick={handleTopGoBack}
       >
         Go back
       </button>
       {!recipeupdateclick && (
-        
         <h2 style={{ paddingBottom: "2%" }}>Recipe Details</h2>
       )}
-      
+
       {!recipeupdateclick && (
         <table className="recipe-details-table">
           <thead>
@@ -160,9 +171,9 @@ const Editrecipe = () => {
       )}
       {recipeupdateclick && (
         <div class="recipe-form">
-          <div className="form-container" style={{ width: "50%"}}>
+          <div className="form-container" style={{ width: "50%" }}>
             <h2 class="form-title">Update Recipe Details</h2>
-            <form onSubmit={handleupdate} style={{marginBottom:"27%"}}>
+            <form onSubmit={handleupdate} style={{ marginBottom: "27%" }}>
               <p>Recipe id: {recipeid}</p>
 
               <input

@@ -15,7 +15,10 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = { username: arr[0], password: arr[1] };
-    Axios.post("http://localhost:4001/Route/admin-login", data)
+    Axios.post(
+      "https://recipe-finder-project-backend.onrender.com/Route/admin-login",
+      data
+    )
       .then((res) => {
         if (res.status === 200) {
           alert("Admin Login successful");
@@ -36,7 +39,6 @@ function Login() {
           {/* Your form components */}
         </Form>
       </form>
-     
     </div>
   );
 }

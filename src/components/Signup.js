@@ -14,7 +14,10 @@ function Signup() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = { email: arr[0], username: arr[1], password: arr[2] };
-    Axios.post("http://localhost:4001/Route/user-signup", data)
+    Axios.post(
+      "https://recipe-finder-project-backend.onrender.com/Route/user-signup",
+      data
+    )
       .then((res) => {
         if (res.status === 200) {
           alert("Successfull Signup");

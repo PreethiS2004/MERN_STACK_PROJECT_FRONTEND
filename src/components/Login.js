@@ -14,11 +14,14 @@ function Login() {
     const data = { username, password };
 
     try {
-      const response = await Axios.post("http://localhost:4001/Route/user-login", data);
+      const response = await Axios.post(
+        "https://recipe-finder-project-backend.onrender.com/Route/user-login",
+        data
+      );
 
       if (response.status === 200) {
         alert("Login successful");
-        navigate('/search');
+        navigate("/search");
       } else {
         alert("Invalid username or password");
         setUsername(""); // Reset the username field
@@ -36,7 +39,7 @@ function Login() {
   return (
     <div>
       <form ref={formRef} onSubmit={handleSubmit}>
-      <Form
+        <Form
           getState={(childData) => {
             setUsername(childData[0]);
             setPassword(childData[1]);
