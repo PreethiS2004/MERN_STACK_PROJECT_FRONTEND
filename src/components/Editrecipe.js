@@ -6,8 +6,10 @@ import { useNavigate } from "react-router-dom";
 const Editrecipe = () => {
   const [recipeDetails, setRecipeDetails] = useState([]);
   const navigate = useNavigate();
+
   const [recipeupdateclick, setrecipeupdateclick] = useState(false);
   const [recipeid, setrecipeid] = useState("");
+
   useEffect(() => {
     // Fetch recipe details from the server when the component mounts
     const fetchRecipeDetails = async () => {
@@ -80,33 +82,31 @@ const Editrecipe = () => {
   const handleupdate = async (event) => {
     event.preventDefault();
 
+    alert("Recipe Updated successfully");
+
     try {
       const response = await Axios.post(
         "https://recipe-finder-project-backend.onrender.com/RecipeRoute/update-recipe",
         mealData
       );
+      console.log(response);
 
-      if (response.status === 200) {
-        alert("Successfully Added the Recipe");
-        setMealData({
-          idMeal: "",
-          strMeal: "",
-          strCategory: "",
-          strArea: "",
-          strInstructions: "",
-          strMealThumb: "",
-          strIngredient1: "",
-          strIngredient2: "",
-          strIngredient3: "",
-          strIngredient4: "",
-          strIngredient5: "",
-          strIngredient6: "",
-          strIngredient7: "",
-          strTags: "",
-        });
-      } else {
-        console.error(response.data);
-      }
+      setMealData({
+        idMeal: "",
+        strMeal: "",
+        strCategory: "",
+        strArea: "",
+        strInstructions: "",
+        strMealThumb: "",
+        strIngredient1: "",
+        strIngredient2: "",
+        strIngredient3: "",
+        strIngredient4: "",
+        strIngredient5: "",
+        strIngredient6: "",
+        strIngredient7: "",
+        strTags: "",
+      });
     } catch (error) {
       alert("Error adding recipe. Please check the console for details.");
     }
